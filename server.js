@@ -51,7 +51,7 @@ function handleEvent(event) {
   } else if (event.type === 'message' && event.message.type === 'm') {
     
     // // create a echoing text message
-    const echo = { type: 'text', text: 'คนเจ้าชู้' };
+    const echo = { type: 'text', text: 'test' };
     
     // // use reply API
     
