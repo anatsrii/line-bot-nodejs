@@ -1,6 +1,14 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 const dotenv = require('dotenv').config();
+const bodyParser = require('body-parser');
+
+
+// create Express app
+// about Express itself: https://expressjs.com/
+const app = express();
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 // create LINE SDK config from env variables
@@ -12,9 +20,6 @@ const config = {
 // create LINE SDK client
 const client = new line.Client(config);
 
-// create Express app
-// about Express itself: https://expressjs.com/
-const app = express();
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
@@ -39,7 +44,6 @@ function handleEvent(event) {
   // const echo = { type: 'text', text: event.message.text };
 
   // // use reply API
-  console.log(event);
   return client.replyMessage(event.replyToken,{ type: 'text', text: event.message.text });
 }
 
