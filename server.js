@@ -40,6 +40,7 @@ app.post('/', line.middleware(config), (req, res) => {
       console.error(err);
       res.status(500).end();
     });
+    console.log(`events = `, events);
 });
 
 // event handler
