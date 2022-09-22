@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 // about Express itself: https://expressjs.com/
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // create LINE SDK config from env variables
@@ -24,13 +24,13 @@ const client = new line.Client(config);
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/', line.middleware(config), async (req, res) => {
- try {
-   const events = req.body.events;
-   console.log(`events = `, events);
-   return events.lenght > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("OK")
- } catch (error) {
+  try {
+    const events = req.body.events;
+    console.log(`events = `, events);
+    return events.lenght > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("OK")
+  } catch (error) {
     res.status(500).end();
- }
+  }
 });
 
 // event handler
@@ -38,14 +38,16 @@ function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
+  } else if (event.type == 'message' || event.message.type == 'hello') {
+
+    // // create a echoing text message
+    const echo = { type: 'text', text: 'hello' };
+
+    // // use reply API
+
+    return client.replyMessage(event.replyToken, echo);
   }
 
-  // // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
-
-  // // use reply API
-  
-  return client.replyMessage(event.replyToken, echo);
 }
 
 // listen on port
