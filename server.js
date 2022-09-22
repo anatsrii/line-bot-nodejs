@@ -18,10 +18,10 @@ const app = express();
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
-app.post('/webhook', line.middleware(config), async (req, res) => {
+app.post('/', line.middleware(config), async (req, res) => {
  try {
-   const events = req.body.events;
-   console.log(`events = ${events}`);
+   const event = req.body.event;
+   console.log(`events = ${event}`);
    res.status(200).send("OK");
  } catch (error) {
     res.status(500).end();
@@ -30,16 +30,16 @@ app.post('/webhook', line.middleware(config), async (req, res) => {
 
 // event handler
 function handleEvent(event) {
-  // if (event.type !== 'message' || event.message.type !== 'text') {
-  //   // ignore non-text-message event
-  //   return Promise.resolve(null);
-  // }
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    // ignore non-text-message event
+    return Promise.resolve(null);
+  }
 
-  // // create a echoing text message
-  // const echo = { type: 'text', text: event.message.text };
+  // create a echoing text message
+  const echo = { type: 'text', text: event.message.text };
 
-  // // use reply API
-  // return client.replyMessage(event.replyToken, echo);
+  // use reply API
+  return client.replyMessage(event.replyToken, echo);
   console.log(event);
 }
 
