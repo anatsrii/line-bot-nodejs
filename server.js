@@ -51,7 +51,7 @@ function handleEvent(event) {
   } else if (event.type == 'message' || event.message.type == 'hello') {
 
     // // create a echoing text message
-    const echo = { type: 'text', text: 'hello' };
+    const echo = { type: 'text', text: `${event.message.type.text}` };
 
     // // use reply API
 
