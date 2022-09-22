@@ -20,9 +20,9 @@ const app = express();
 // about the middleware, please refer to doc
 app.post('/', line.middleware(config), async (req, res) => {
  try {
-   const event = req.body.event;
-   console.log(`events = ${event}`);
-   res.status(200).send("OK");
+   const events = req.body.events;
+   console.log(`events = `, events);
+   return events.lenght > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("OK")
  } catch (error) {
     res.status(500).end();
  }
