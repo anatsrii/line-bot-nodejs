@@ -23,14 +23,23 @@ const client = new line.Client(config);
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
-app.post('/', line.middleware(config), async (req, res) => {
-  try {
-    const events = req.body.events;
-    console.log(`events = `, events);
-    return events.lenght > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("OK")
-  } catch (error) {
-    res.status(500).end();
-  }
+// app.post('/', line.middleware(config), async (req, res) => {
+//   try {
+//     const events = req.body.events;
+//     console.log(`events = `, events);
+//     return events.lenght > 0 ? await events.map(item => handleEvent(item)) : res.status(200).send("OK")
+//   } catch (error) {
+//     res.status(500).end();
+//   }
+// });
+app.post('/', line.middleware(config), (req, res) => {
+  Promise
+    .all(req.body.events.map(handleEvent))
+    .then((result) => res.json(result))
+    .catch((err) => {
+      console.error(err);
+      res.status(500).end();
+    });
 });
 
 // event handler
