@@ -7675,66 +7675,6 @@
     "name": "Binance Multi-Chain Capital"
   },
   {
-    "id": "binance-peg-avalanche",
-    "symbol": "avax",
-    "name": "Binance-Peg Avalanche"
-  },
-  {
-    "id": "binance-peg-bitcoin-cash",
-    "symbol": "bch",
-    "name": "Binance-Peg Bitcoin Cash"
-  },
-  {
-    "id": "binance-peg-cardano",
-    "symbol": "ada",
-    "name": "Binance-Peg Cardano"
-  },
-  {
-    "id": "binance-peg-dogecoin",
-    "symbol": "doge",
-    "name": "Binance-Peg Dogecoin"
-  },
-  {
-    "id": "binance-peg-eos",
-    "symbol": "eos",
-    "name": "Binance-Peg EOS"
-  },
-  {
-    "id": "binance-peg-filecoin",
-    "symbol": "fil",
-    "name": "Binance-Peg Filecoin"
-  },
-  {
-    "id": "binance-peg-firo",
-    "symbol": "firo",
-    "name": "Binance-Peg Firo"
-  },
-  {
-    "id": "binance-peg-iotex",
-    "symbol": "iotx",
-    "name": "Binance-Peg IoTeX"
-  },
-  {
-    "id": "binance-peg-litecoin",
-    "symbol": "ltc",
-    "name": "Binance-Peg Litecoin"
-  },
-  {
-    "id": "binance-peg-ontology",
-    "symbol": "ont",
-    "name": "Binance-Peg Ontology"
-  },
-  {
-    "id": "binance-peg-polkadot",
-    "symbol": "dot",
-    "name": "Binance-Peg Polkadot"
-  },
-  {
-    "id": "binance-peg-xrp",
-    "symbol": "xrp",
-    "name": "Binance-Peg XRP"
-  },
-  {
     "id": "binance-smart-chain-girl",
     "symbol": "bscgirl",
     "name": "Binance Smart Chain Girl"
@@ -26789,11 +26729,7 @@
     "symbol": "bnb",
     "name": "Heco-Peg Binance Coin"
   },
-  {
-    "id": "heco-peg-xrp",
-    "symbol": "xrp",
-    "name": "Heco-Peg XRP"
-  },
+  
   {
     "id": "hectagon",
     "symbol": "hecta",
